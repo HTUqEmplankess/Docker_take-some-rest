@@ -1,11 +1,17 @@
 # Use Node v4 as the base image.
 FROM node:17-alpine
 
-# Add everything in the current directory to our image, in the 'app' folder.
-ADD . /app
+
+COPY . /app
+
+WORKDIR /app
 
 # Install dependencies
-RUN cd /app; npm install;
+RUN cd /app; 
+RUN npm install;
+
+ARG CONFIG_ENV
+ENV CONFIG_ENV=${CONFIG_ENV}
 
 # Expose our server port.
 EXPOSE 5000

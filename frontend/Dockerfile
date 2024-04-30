@@ -4,7 +4,7 @@ COPY . /app
 WORKDIR /app
 
 RUN cd /app; 
-RUN npm i; 
+RUN npm install; 
  
 # Environment variables must be redefined at run time
 ARG ENV_VARIABLE
