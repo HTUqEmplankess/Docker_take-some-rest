@@ -5,7 +5,7 @@ FROM node:17-alpine
 ADD . /app
 
 # Install dependencies
-RUN cd /app; npm install --production
+RUN cd /app; npm install;
 
 # Expose our server port.
 EXPOSE 5000

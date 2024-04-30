@@ -1,9 +1,10 @@
-FROM node:18-alpine AS base
-
+FROM node:18-alpine
 COPY . /app
 
-# Build Next.js based on the preferred package manager
-RUN cd /app; npm install --production
+WORKDIR /app
+
+RUN cd /app; 
+RUN npm i; 
  
 # Environment variables must be redefined at run time
 ARG ENV_VARIABLE
@@ -11,6 +12,8 @@ ENV ENV_VARIABLE=${ENV_VARIABLE}
 ARG NEXT_PUBLIC_ENV_VARIABLE
 ENV NEXT_PUBLIC_ENV_VARIABLE=${NEXT_PUBLIC_ENV_VARIABLE}
 
+RUN npm run build;
+
 EXPOSE 3000
 
-CMD ["npm", "strat"]
+CMD ["npm", "start"]
